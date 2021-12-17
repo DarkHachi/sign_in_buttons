@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:custom_signin_buttons_dev/custom_signin_buttons.dart';
+import 'package:custom_signin_buttons/custom_signin_buttons.dart';
 
 class SignInButton extends StatelessWidget {
   final Button button;
