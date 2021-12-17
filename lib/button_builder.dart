@@ -1,6 +1,7 @@
+// ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors
 import 'package:flutter/material.dart';
 
-class CustomButton extends StatelessWidget {
+class CustomSignInButton extends StatelessWidget {
   final double borderRadius;
   final Color buttonColor;
   final IconData customIcon;
@@ -11,7 +12,10 @@ class CustomButton extends StatelessWidget {
   final Color imageBackgroundColor;
   final EdgeInsetsGeometry imageMargin;
   final EdgeInsetsGeometry imagePadding;
+  final double iconLeftPadding;
+  final double iconTopPadding;
   final double imageSize;
+  final bool mini;
   final Function()? onPressed;
   final String setAssetImage;
   final Color splashColor;
@@ -22,19 +26,22 @@ class CustomButton extends StatelessWidget {
   final Gradient setGradient;
   final double width;
 
-  const CustomButton({
+  const CustomSignInButton({
     this.borderRadius = 5,
     this.buttonColor = const Color(0xFFEEEEEE),
     this.customIcon = Icons.new_releases_rounded,
     this.elevation = 0,
     this.height = 40,
     this.iconColor = Colors.grey,
-    this.iconSize = 25,
+    this.iconSize = 24,
     this.imageBackgroundColor = Colors.transparent,
     this.imageMargin = const EdgeInsets.all(4),
     this.imagePadding = const EdgeInsets.all(4),
+    this.iconLeftPadding = 0,
+    this.iconTopPadding = 0,
     this.imageSize = 25,
     Key? key,
+    this.mini = false,
     this.onPressed,
     this.setAssetImage = '',
     this.splashColor = Colors.transparent,
@@ -49,8 +56,8 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height,
-      width: width,
+      height: mini ? 40 : height,
+      width: mini ? 40 : width,
       decoration: !useGradient
           ? BoxDecoration(
               color: buttonColor,
@@ -59,11 +66,13 @@ class CustomButton extends StatelessWidget {
               gradient: setGradient,
               borderRadius: BorderRadius.circular(borderRadius)),
       child: MaterialButton(
-        padding: EdgeInsets.only(left: 0),
+        padding: EdgeInsets.only(left: iconLeftPadding, top: iconTopPadding),
         splashColor: splashColor,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius)),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
                 color: imageBackgroundColor,
@@ -87,6 +96,9 @@ class CustomButton extends StatelessWidget {
                               size: iconSize,
                             ),
                 )),
+            mini
+                ? SizedBox()
+                : 
             Expanded(
               child: Center(
                 child: Text(text,
