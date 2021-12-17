@@ -17,7 +17,7 @@ class CustomSignInButton extends StatelessWidget {
   final double imageSize;
   final bool mini;
   final Function()? onPressed;
-  final String setAssetImage;
+  final AssetImage setAssetImage;
   final Color splashColor;
   final String text;
   final Color textColor;
@@ -43,8 +43,8 @@ class CustomSignInButton extends StatelessWidget {
     Key? key,
     this.mini = false,
     this.onPressed,
-    this.setAssetImage = '',
-    this.splashColor = Colors.transparent,
+    this.setAssetImage = const AssetImage(''),
+    this.splashColor = Colors.white,
     this.text = 'New Button',
     this.textColor = Colors.black87,
     this.useGoogleImage = false,
@@ -75,7 +75,10 @@ class CustomSignInButton extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
+                decoration: BoxDecoration(
                 color: imageBackgroundColor,
+                  borderRadius: BorderRadius.circular(borderRadius),
+                ),
                 padding: imagePadding,
                 margin: imageMargin,
                 child: Container(
@@ -85,9 +88,9 @@ class CustomSignInButton extends StatelessWidget {
                           image: AssetImage('assets/google.png'),
                           height: imageSize,
                         )
-                      : setAssetImage.isNotEmpty
+                      : setAssetImage.assetName.isNotEmpty
                           ? Image(
-                              image: AssetImage(setAssetImage),
+                              image: setAssetImage,
                               height: imageSize,
                             )
                           : Icon(

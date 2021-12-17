@@ -24,7 +24,7 @@ class SignInButton extends StatelessWidget {
     Key? key,
     this.mini = false,
     this.onPressed,
-    this.splashColor = Colors.transparent,
+    this.splashColor = Colors.white30,
     this.textColor = Colors.black,
     this.width = double.infinity,
   }) : super(key: key);
@@ -61,7 +61,7 @@ class SignInButton extends StatelessWidget {
             width: width,
             splashColor: splashColor,
             borderRadius: borderRadius,
-            buttonColor: Color(0xFF7289da),
+            buttonColor: Color(0xFF5663F7),
             textColor: Colors.white,
             customIcon: FontAwesomeIcons.discord,
             iconLeftPadding: 9,
@@ -203,6 +203,7 @@ class SignInButton extends StatelessWidget {
             iconColor: Colors.white,
             onPressed: onPressed);
       case Button.PlayStation:
+      case Button.PlayStationGradient:
         return CustomSignInButton(
             key: ValueKey('PlayStation'),
             mini: mini,
@@ -211,14 +212,26 @@ class SignInButton extends StatelessWidget {
             width: width,
             splashColor: splashColor,
             borderRadius: borderRadius,
-            buttonColor: Color(0xFF013888),
+            buttonColor: Color(0xFF00439c),
+            useGradient: button == Button.PlayStationGradient ? true : false,
+            setGradient: LinearGradient(
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+                colors: const [
+                  Color(0xFF00246E),
+                  Color(0xFF0172D0),
+                ],
+                stops: const [
+                  0.1,
+                  0.9
+                ]),
             textColor: Colors.white,
             customIcon: FontAwesomeIcons.playstation,
             imagePadding: EdgeInsets.symmetric(vertical: 3),
             iconColor: Colors.white,
             onPressed: onPressed);
       case Button.Spotify:
-      case Button.SpotifyLigth:
+      case Button.SpotifyLight:
         return CustomSignInButton(
             key: ValueKey('Spotify'),
             mini: mini,
@@ -227,13 +240,13 @@ class SignInButton extends StatelessWidget {
             width: width,
             splashColor: splashColor,
             borderRadius: borderRadius,
-            buttonColor: button == Button.SpotifyLigth
+            buttonColor: button == Button.SpotifyLight
                 ? Color(0xFF1DB954)
                 : Color(0xFF222222),
             textColor: Colors.white,
             customIcon: FontAwesomeIcons.spotify,
             iconSize: 24,
-            iconColor: button == Button.SpotifyLigth
+            iconColor: button == Button.SpotifyLight
                 ? Colors.white
                 : Color(0xFF1DB954),
             onPressed: onPressed);
@@ -263,7 +276,24 @@ class SignInButton extends StatelessWidget {
             customIcon: FontAwesomeIcons.steamSymbol,
             iconColor: Colors.white,
             onPressed: onPressed);
+      case Button.TikTok:
+        return CustomSignInButton(
+            key: ValueKey('TikTok'),
+            mini: mini,
+            text: 'Iniciar sesion con TikTok',
+            height: height,
+            width: width,
+            splashColor: splashColor,
+            borderRadius: borderRadius,
+            setAssetImage: AssetImage('assets/tiktok.png'),
+            imageSize: 24,
+            buttonColor: Colors.black,
+            textColor: Colors.white,
+            customIcon: FontAwesomeIcons.twitter,
+            iconColor: Colors.white,
+            onPressed: onPressed);
       case Button.Twitch:
+      case Button.TwitchLight:
         return CustomSignInButton(
             key: ValueKey('Twitch'),
             mini: mini,
@@ -272,10 +302,14 @@ class SignInButton extends StatelessWidget {
             width: width,
             splashColor: splashColor,
             borderRadius: borderRadius,
-            buttonColor: Color(0xFF8D1DB9),
-            textColor: Colors.white,
+            buttonColor: button == Button.TwitchLight
+                ? Color(0xFF9146FF)
+                : Color(0xFFE2E2E2),
+            textColor:
+                button == Button.TwitchLight ? Colors.white : Colors.black,
             customIcon: FontAwesomeIcons.twitch,
-            iconColor: Colors.white,
+            iconColor:
+                button == Button.TwitchLight ? Colors.white : Color(0xFF9146FF),
             onPressed: onPressed);
       case Button.Twitter:
         return CustomSignInButton(
@@ -286,7 +320,7 @@ class SignInButton extends StatelessWidget {
             width: width,
             splashColor: splashColor,
             borderRadius: borderRadius,
-            buttonColor: Color(0xFF1DA0F2),
+            buttonColor: Color(0xFF1DA1F2),
             textColor: Colors.white,
             customIcon: FontAwesomeIcons.twitter,
             iconColor: Colors.white,
@@ -302,12 +336,12 @@ class SignInButton extends StatelessWidget {
             splashColor: splashColor,
             borderRadius: borderRadius,
             buttonColor:
-                button == Button.Xbox ? Color(0xFFEBEBEB) : Color(0xFF2CA243),
+                button == Button.Xbox ? Color(0xFFEBEBEB) : Color(0xFF107C10),
             textColor:
                 button == Button.Xbox ? Colors.black87 : Color(0xFFF3F2F1),
             customIcon: FontAwesomeIcons.xbox,
             iconColor:
-                button == Button.Xbox ? Color(0xFF2CA243) : Color(0xFFF3F2F1),
+                button == Button.Xbox ? Color(0xFF107C10) : Color(0xFFF3F2F1),
             onPressed: onPressed);
     }
   }
